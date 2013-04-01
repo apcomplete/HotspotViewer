@@ -30,7 +30,7 @@
 - (void) clearInputs;
 - (void) importHotspots:(NSString *)filePath;
 - (void) addHotspot:(NSInteger)x :(NSInteger)y :(NSString*)caption;
-- (void)highlightRow:(id)sender;
-- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView;
+- (void) highlightRow:(id)sender;
+- (NSInteger) numberOfRowsInTableView:(NSTableView *)tableView;
 - (id) tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 @end

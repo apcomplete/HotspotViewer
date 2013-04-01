@@ -16,6 +16,7 @@
 @property (nonatomic,strong) NSString *imagePath;
 @property (nonatomic,strong) NSImage *image;
 @property (nonatomic,strong) NSMutableArray *hotSpots;
+@property (nonatomic,strong) NSMutableArray *hotspotIcons;
 
 @property (weak) IBOutlet NSButton *button;
 @property (strong) IBOutlet NSPopover *popover;
@@ -27,6 +28,9 @@
 @property (weak) IBOutlet NSTableView *hsTable;
 
 - (void) clearInputs;
+- (void) importHotspots:(NSString *)filePath;
+- (void) addHotspot:(NSInteger)x :(NSInteger)y :(NSString*)caption;
+- (void)highlightRow:(id)sender;
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView;
 - (id) tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row;
 @end

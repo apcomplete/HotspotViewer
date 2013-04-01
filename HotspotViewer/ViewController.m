@@ -20,6 +20,7 @@
     if (self) {
         self.image = image;
         self.hotSpots = [[NSMutableArray alloc] initWithCapacity:40];
+        self.hotspotIcons = [[NSMutableArray alloc] initWithCapacity:40];
     }
     
     return self;
@@ -62,20 +63,56 @@
     [self.captionField setStringValue:@""];
 }
 
+- (void) importHotspots:(NSString *)filePath
+{
+    NSString *myJSON = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+    myJSON = [NSString stringWithFormat:@"[%@]",myJSON];
+    NSData *jsonData = [myJSON dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *e = nil;
+    NSArray *json = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&e];
+    for (NSDictionary *object in json) {
+        [self addHotspot:[[object objectForKey:@"x"] integerValue] :[[object objectForKey:@"y"] integerValue] :[object objectForKey:@"body"]];
+    }
+}
+
 - (IBAction)clickCancel:(id)sender {
     [self.popover close];
     [self clearInputs];
 }
 
 - (IBAction)clickOK:(id)sender {
-    Hotspot *h = [[Hotspot alloc] init];
-    h.x = (NSInteger)[[self.coordForm cellAtIndex:0] integerValue];
-    h.y = (NSInteger)[[self.coordForm cellAtIndex:1] integerValue];
-    h.caption = [self.captionField stringValue];
-    [self.hotSpots addObject:h];
-    [self.hsTable reloadData];
+    [self addHotspot: (NSInteger)[[self.coordForm cellAtIndex:0] integerValue]: (NSInteger)[[self.coordForm cellAtIndex:1] integerValue]:[self.captionField stringValue]];
     [self.popover close];
     [self clearInputs];
+}
+
+- (void)addHotspot:(NSInteger)x :(NSInteger)y :(NSString*)caption
+{
+    Hotspot *h = [[Hotspot alloc] init];
+    h.x = x;
+    h.y = y;
+    h.caption = caption;
+    NSImageRep *imgRep = self.image.representations[0];
+    int imageHeight = (int)[imgRep pixelsHigh];
+    NSInteger trueY = imageHeight - y;
+    [self.hotSpots addObject:h];
+    [self.hsTable reloadData];
+    NSButton *iconButton = [[NSButton alloc] initWithFrame:NSMakeRect(x, trueY, 20, 20)];
+    [iconButton setButtonType:NSMomentaryChangeButton];
+    [iconButton setImage:[NSImage imageNamed:@"target.png"]];
+    [iconButton setImagePosition:NSImageOnly];
+    [iconButton setBordered:NO];
+    [iconButton setAutoresizesSubviews:YES];
+    [iconButton setAction:@selector(highlightRow:)];
+    [iconButton setTarget:self];
+    [self.view addSubview:iconButton];
+    [self.hotspotIcons addObject:iconButton];
+}
+
+- (void)highlightRow:(id)sender
+{
+    NSInteger row = [self.hotspotIcons indexOfObject:sender];
+    [self.hsTable selectRowIndexes:[NSIndexSet indexSetWithIndex:row] byExtendingSelection:NO];
 }
 
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView
@@ -98,6 +135,10 @@
     {
         h.caption = (NSString *)object;
     }
+    NSImageRep *imgRep = self.image.representations[0];
+    int imageHeight = (int)[imgRep pixelsHigh];
+    NSInteger trueY = imageHeight - h.y;
+    [[self.hotspotIcons objectAtIndex:row] setFrame:NSMakeRect(h.x, trueY, 20, 20)];
 }
 
 - (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row

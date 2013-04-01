@@ -66,6 +66,12 @@
     [imageToView addRepresentation:imgRep];
     [imageToView setName:[[imagePath lastPathComponent] stringByDeletingPathExtension]];
     self.viewController = [[ViewController alloc] initWithImage:imageToView];
+    
+    NSString *jsonFile = [[imagePath stringByDeletingPathExtension] stringByAppendingPathExtension:@"json"];
+    bool b=[[NSFileManager defaultManager] fileExistsAtPath:jsonFile];
+    if (b) {
+        [self.viewController importHotspots:jsonFile];
+    }
     self.currentView = self.viewController.view;
     [self.window.contentView addSubview:self.viewController.view];
     [self.window setFrame:[NSWindow frameRectForContentRect:

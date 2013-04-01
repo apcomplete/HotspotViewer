@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA2ABFEE170A074300F5C8DB /* target.png in Resources */ = {isa = PBXBuildFile; fileRef = FA2ABFED170A074300F5C8DB /* target.png */; };
 		FA422EC317037AA3007CB79D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA422EC217037AA2007CB79D /* Cocoa.framework */; };
 		FA422ECD17037AA3007CB79D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA422ECB17037AA3007CB79D /* InfoPlist.strings */; };
 		FA422ECF17037AA3007CB79D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FA422ECE17037AA3007CB79D /* main.m */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA2ABFED170A074300F5C8DB /* target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = target.png; sourceTree = "<group>"; };
 		FA422EBF17037AA2007CB79D /* HotspotViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotspotViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA422EC217037AA2007CB79D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FA422EC517037AA3007CB79D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -92,6 +94,7 @@
 			children = (
 				FA422EE517037C13007CB79D /* ViewController.h */,
 				FA422EE617037C13007CB79D /* ViewController.m */,
+				FA2ABFED170A074300F5C8DB /* target.png */,
 				FA422EE717037C13007CB79D /* ViewController.xib */,
 				FAA2DBC21704E67200BB7EBF /* Hotspot.h */,
 				FAA2DBC31704E67200BB7EBF /* Hotspot.m */,
@@ -170,6 +173,7 @@
 				FA422ED317037AA3007CB79D /* Credits.rtf in Resources */,
 				FA422ED917037AA3007CB79D /* MainMenu.xib in Resources */,
 				FA422EE917037C13007CB79D /* ViewController.xib in Resources */,
+				FA2ABFEE170A074300F5C8DB /* target.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

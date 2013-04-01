@@ -11,7 +11,7 @@
 @implementation Hotspot
 
 - (NSString *) toJSON{
-    NSDictionary *data = @{@"x": @(self.x), @"y":@(self.y),@"caption":self.caption};
+    NSDictionary *data = @{@"x": @(self.x), @"y":@(self.y),@"body":self.caption};
     NSError *writeError = nil;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:data options:NSJSONWritingPrettyPrinted error:&writeError];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];

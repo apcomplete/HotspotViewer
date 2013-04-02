@@ -49,8 +49,8 @@
     
     int coordX = (int) coords.x;
     int coordY = (int) coords.y;
-    [[self.coordForm cellAtIndex:0] setStringValue:[NSString stringWithFormat:@"%i",coordX]];
-    [[self.coordForm cellAtIndex:1] setStringValue:[NSString stringWithFormat:@"%i",coordY]];
+    [self.formX setStringValue:[NSString stringWithFormat:@"%i",coordX]];
+    [self.formY setStringValue:[NSString stringWithFormat:@"%i",coordY]];
     
     [self.popover showRelativeToRect:NSMakeRect(coords.x, coords.y, 1.0, 1.0) ofView:self.button preferredEdge:NSMaxYEdge];
     [self.captionField becomeFirstResponder];
@@ -58,8 +58,8 @@
 
 - (void) clearInputs
 {
-    [[self.coordForm cellAtIndex:0] setStringValue:@""];
-    [[self.coordForm cellAtIndex:1] setStringValue:@""];
+    [self.formX setStringValue:@""];
+    [self.formY setStringValue:@""];
     [self.captionField setStringValue:@""];
 }
 
@@ -81,7 +81,7 @@
 }
 
 - (IBAction)clickOK:(id)sender {
-    [self addHotspot: (NSInteger)[[self.coordForm cellAtIndex:0] integerValue]: (NSInteger)[[self.coordForm cellAtIndex:1] integerValue]:[self.captionField stringValue]];
+    [self addHotspot: (NSInteger)[self.formX integerValue]: (NSInteger)[self.formY integerValue]:[self.captionField stringValue]];
     [self.popover close];
     [self clearInputs];
 }

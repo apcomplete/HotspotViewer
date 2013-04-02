@@ -19,14 +19,14 @@
 @property (nonatomic,strong) NSMutableArray *hotSpots;
 @property (nonatomic,strong) NSMutableArray *hotspotIcons;
 
-
 - (IBAction) mouseUp:(id)sender;
 
 @property (weak) IBOutlet NSButton *button;
 @property (weak) IBOutlet NSPopover *popover;
-@property (weak) IBOutlet NSForm *coordForm;
 @property (weak) IBOutlet NSTextField *captionField;
 @property (weak) IBOutlet NSTableView *hsTable;
+@property (weak) IBOutlet NSFormCell *formX;
+@property (weak) IBOutlet NSFormCell *formY;
 
 - (void) clearInputs;
 - (void) importHotspots:(NSString *)filePath;

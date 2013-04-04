@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1070</int>
-		<string key="IBDocument.SystemVersion">12C60</string>
+		<string key="IBDocument.SystemVersion">12D78</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1187.34</string>
-		<string key="IBDocument.HIToolboxVersion">625.00</string>
+		<string key="IBDocument.AppKitVersion">1187.37</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">3084</string>
@@ -48,7 +48,7 @@
 				<string key="NSClassName">NSApplication</string>
 			</object>
 			<object class="NSCustomView" id="1005">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSButton" id="536699295">
@@ -56,6 +56,7 @@
 						<int key="NSvFlags">268</int>
 						<string key="NSFrameSize">{777, 515}</string>
 						<reference key="NSSuperview" ref="1005"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="570583011">
@@ -80,6 +81,8 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{777, 515}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="536699295"/>
 				<string key="NSClassName">NSView</string>
 			</object>
@@ -93,7 +96,6 @@
 						<string key="NSFrame">{{131, 30}, {52, 19}}</string>
 						<reference key="NSSuperview" ref="908075719"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="719453897">
@@ -570,14 +572,6 @@
 					<int key="connectionID">127</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">mouseUp:</string>
-						<reference key="source" ref="1001"/>
-						<reference key="destination" ref="536699295"/>
-					</object>
-					<int key="connectionID">128</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">popover</string>
 						<reference key="source" ref="1001"/>
@@ -632,6 +626,14 @@
 						<reference key="destination" ref="564854830"/>
 					</object>
 					<int key="connectionID">278</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">mouseUp:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="536699295"/>
+					</object>
+					<int key="connectionID">279</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -1450,7 +1452,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">278</int>
+			<int key="maxID">279</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1466,10 +1468,15 @@
 					<string key="className">ViewController</string>
 					<string key="superclassName">NSViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="clickCancel:">id</string>
 						<string key="clickOK:">id</string>
 						<string key="mouseUp:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="clickCancel:">
+							<string key="name">clickCancel:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="clickOK:">
 							<string key="name">clickOK:</string>
 							<string key="candidateClassName">id</string>

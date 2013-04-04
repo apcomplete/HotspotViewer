@@ -55,9 +55,6 @@
 }
 - (void) openNewDialog:(NSURL *)imageURL
 {
-    if (self.currentView != nil) {
-        [self.currentView removeFromSuperview];
-    }
     NSString *imagePath = [imageURL path];
     NSImageRep *imgRep = [NSImageRep imageRepWithContentsOfFile:imagePath];
     int imageWidth = (int)[imgRep pixelsWide];
@@ -72,18 +69,24 @@
     if (b) {
         [self.viewController importHotspots:jsonFile];
     }
-    self.currentView = self.viewController.view;
-    [self.window.contentView addSubview:self.viewController.view];
-    [self.window setFrame:[NSWindow frameRectForContentRect:
-                        NSMakeRect([self.window frame].origin.x,
-                                   [self.window frame].origin.y,
-                                   imageWidth,
-                                   imageHeight)
-                                               styleMask: [self.window styleMask]
-                        ]
-               display:YES
-               animate:YES];
-    self.viewController.view.frame = ((NSView *)self.window.contentView).bounds;
+    self.scrollView = [[NSScrollView alloc] initWithFrame:[[self.window contentView] frame ]];
+    [self.scrollView setHasHorizontalScroller:YES];
+    [self.scrollView setHasVerticalScroller:YES];
+    [self.scrollView setBorderType:NSNoBorder];
+    [self.scrollView setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [self.viewController.view setFrameSize:[imageToView size]];
+    [self.scrollView setDocumentView:self.viewController.view];
+    [self.window setContentView:self.scrollView];
+//    [self.window setFrame:[NSWindow frameRectForContentRect:
+//                        NSMakeRect([self.window frame].origin.x,
+//                                   [self.window frame].origin.y,
+//                                   imageWidth,
+//                                   imageHeight)
+//                                               styleMask: [self.window styleMask]
+//                        ]
+//               display:YES
+//               animate:YES];
+//    self.viewController.view.frame = ((NSView *)self.window.contentView).bounds;
 }
 
 @end

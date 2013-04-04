@@ -12,8 +12,8 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
-@property (nonatomic,strong) NSView *currentView;
-@property (nonatomic,strong) ViewController *viewController;
+@property (nonatomic, strong) ViewController *viewController;
+@property (nonatomic, strong) NSScrollView *scrollView;
 
 - (IBAction)openDocument:(id)sender;
 - (IBAction)saveDocument:(id)sender;

@@ -32,7 +32,7 @@
 
 - (void) awakeFromNib
 {
-    [self.button setFrameSize:self.image.size];
+//    [self.button setFrameSize:self.image.size];
     [self.button setImage:self.image];
     [self.button setImagePosition:NSImageOnly];
     [self.button setBordered:NO];
@@ -41,16 +41,13 @@
 - (IBAction)mouseUp:(id)sender
 {
     NSEvent *theEvent = [NSApp currentEvent];
-    NSPoint coords = [theEvent locationInWindow];
+    NSPoint coords = [self.button convertPoint:[theEvent locationInWindow] fromView:nil];
     NSImageRep *imgRep = self.image.representations[0];
     int imageHeight = (int)[imgRep pixelsHigh];
-    int offset = imageHeight - (int) self.view.frame.size.height;
-    coords.y = (imageHeight - offset) - coords.y;
+//    coords.y = imageHeight - coords.y;
     
-    int coordX = (int) coords.x;
-    int coordY = (int) coords.y;
-    [self.formX setStringValue:[NSString stringWithFormat:@"%i",coordX]];
-    [self.formY setStringValue:[NSString stringWithFormat:@"%i",coordY]];
+    [self.formX setStringValue:[NSString stringWithFormat:@"%i",(int)coords.x]];
+    [self.formY setStringValue:[NSString stringWithFormat:@"%i",(int)coords.y]];
     
     [self.popover showRelativeToRect:NSMakeRect(coords.x, coords.y, 1.0, 1.0) ofView:self.button preferredEdge:NSMaxYEdge];
     [self.captionField becomeFirstResponder];

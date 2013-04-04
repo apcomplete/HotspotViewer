@@ -94,7 +94,7 @@
     NSInteger trueY = imageHeight - y;
     [self.hotSpots addObject:h];
     [self.hsTable reloadData];
-    NSButton *iconButton = [[NSButton alloc] initWithFrame:NSMakeRect(x, trueY, 20, 20)];
+    NSButton *iconButton = [[NSButton alloc] initWithFrame:NSMakeRect(x-10, trueY-10, 20, 20)];
     [iconButton setButtonType:NSMomentaryChangeButton];
     [iconButton setImage:[NSImage imageNamed:@"target.png"]];
     [iconButton setImagePosition:NSImageOnly];

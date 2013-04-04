@@ -77,16 +77,7 @@
     [self.viewController.view setFrameSize:[imageToView size]];
     [self.scrollView setDocumentView:self.viewController.view];
     [self.window setContentView:self.scrollView];
-//    [self.window setFrame:[NSWindow frameRectForContentRect:
-//                        NSMakeRect([self.window frame].origin.x,
-//                                   [self.window frame].origin.y,
-//                                   imageWidth,
-//                                   imageHeight)
-//                                               styleMask: [self.window styleMask]
-//                        ]
-//               display:YES
-//               animate:YES];
-//    self.viewController.view.frame = ((NSView *)self.window.contentView).bounds;
+    [self.window setFrame:[[NSScreen mainScreen] visibleFrame] display:YES];
 }
 
 @end
